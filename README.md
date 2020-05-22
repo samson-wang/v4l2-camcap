@@ -14,3 +14,15 @@ g++ -Wall -o webcam_capture webcam_cap.cpp
 
 ffplay -f mjpeg test.mjpeg
 ```
+
+## More efficient way
+
+https://www.kernel.org/doc/html/v4.14/media/uapi/v4l/capture.c.html
+
+```
+gcc v4l2_cap.c -o v4l2_cap
+
+# Will run at 25 fps.
+./v4l2_cap -d /dev/video0 -m -o  -c 150 > cap.mjpeg
+```
+
